@@ -1,0 +1,48 @@
+<h2 class="text-center">All fields are required</h2>
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+        <div class="form-group">
+          <label for="postcode">
+            Postcode
+          </label>
+          <input class="form-control" [(ngModel)] = "selectedHousing.postcode" >
+        </div>
+        <div class="form-group">
+            <label for="adressLine1">
+              Address (line1)
+            </label>
+            <input class="form-control" [(ngModel)] = "selectedHousing.addressLine1" >
+        </div>
+        <div class="form-group">
+            <label for="adressLine2">
+              Address (line2)
+            </label>
+            <input class="form-control" [(ngModel)] = "selectedHousing.addressLine2">
+        </div>
+        <div class="form-group">
+            <label for="city">
+              City
+            </label>
+            <input class="form-control" [(ngModel)] = "selectedHousing.city" >
+        </div>
+        <div class="form-group">
+            <label for="county">
+                County
+            </label>
+            <input class="form-control" [(ngModel)] = "selectedHousing.county">
+        </div>
+        <div class="form-group">
+            <label for="country">
+              Country
+            </label>
+            <input class="form-control" [(ngModel)] = "selectedHousing.country" >
+        </div>
+        <div class="form-group">
+            <label for="movingDate">
+              Moving date
+            </label>
+            <input class="form-control"  [(ngModel)] = "selectedHousing.movingDate" placeholder="YYYY-MM-DDThh:mm" >
+        </div>
+      <button type="button" class="btn btn-primary" (click)="registerHousing()"> Register housing</button>
+    </div>
+  </div>
