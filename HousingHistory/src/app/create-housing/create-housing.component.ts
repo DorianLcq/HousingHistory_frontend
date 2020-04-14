@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HousingService} from "../services/housing.service";
+import {Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-housing',
@@ -10,9 +11,10 @@ import {HousingService} from "../services/housing.service";
 export class CreateHousingComponent {
 
   selectedHousing;
+  fiveYears = false;
  
 
-  constructor(private housingService:HousingService) { 
+  constructor(public router: Router, private housingService:HousingService) { 
     this.selectedHousing = {id: -1, 
                             postcode:'', 
                             addressLine1:'', 
@@ -23,16 +25,38 @@ export class CreateHousingComponent {
                             movingDate: ''}
   }
 
-  
-
-
-  registerHousing() {
+  registerHousing(fiveYears) {
     this.housingService.registerNewHousing(this.selectedHousing).subscribe(
       response => {
-        alert('Housing ' + this.selectedHousing.postcode + ' has been created !')
+        if(!fiveYears)
+        {
+          alert('Your housing ' + this.selectedHousing.postcode + ' has been created !')
+          this.selectedHousing = {id: -1, 
+            postcode:'', 
+            addressLine1:'', 
+            addressLine2:'', 
+            city:'',
+            county:'', 
+            country:'', 
+            movingDate: ''}
+          this.router.navigate(['/add']);
+        }
+        if(fiveYears)
+        {
+          alert('Your last housing ' + this.selectedHousing.postcode + ' has been created !')
+          this.selectedHousing = {id: -1, 
+            postcode:'', 
+            addressLine1:'', 
+            addressLine2:'', 
+            city:'',
+            county:'', 
+            country:'', 
+            movingDate: ''}
+          this.router.navigate(['/list']);
+        }
+        
       },
       error => console.log('error', error)
     );
   }
-
 }

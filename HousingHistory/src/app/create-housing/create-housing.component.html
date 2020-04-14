@@ -1,4 +1,5 @@
-<h2 class="text-center">All fields are required</h2>
+<h2 class="text-center">Inform your homes for 5 years</h2>
+<h3 class="text-center">All fields are required</h3>
 <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
         <div class="form-group">
@@ -18,6 +19,7 @@
               Address (line2)
             </label>
             <input class="form-control" [(ngModel)] = "selectedHousing.addressLine2">
+            <small class="form-text text-muted">Fill in "/" if you don't need this line</small>
         </div>
         <div class="form-group">
             <label for="city">
@@ -41,8 +43,13 @@
             <label for="movingDate">
               Moving date
             </label>
-            <input class="form-control"  [(ngModel)] = "selectedHousing.movingDate" placeholder="YYYY-MM-DDThh:mm" >
+            <input class="form-control" type="datetime"  [(ngModel)] = "selectedHousing.movingDate" placeholder="YYYY-MM-DDThh:mm" >
         </div>
-      <button type="button" class="btn btn-primary" (click)="registerHousing()"> Register housing</button>
+        <button type="button" class="btn btn-primary" (click)="registerHousing(false)" > 
+          Next housing
+        </button>
+        <button type="button" class="btn btn-primary" (click)="registerHousing(true)" > 
+          Last housing
+        </button>
     </div>
   </div>
