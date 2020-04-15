@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HousingService} from "../services/housing.service";
 import {Router } from '@angular/router';
+import { postcodeValidator} from 'postcode-validator';
 
 @Component({
   selector: 'app-create-housing',
@@ -11,8 +12,8 @@ import {Router } from '@angular/router';
 export class CreateHousingComponent {
 
   selectedHousing;
-  fiveYears = false;
- 
+  fiveYearsCheck;
+  
 
   constructor(public router: Router, private housingService:HousingService) { 
     this.selectedHousing = {id: -1, 
@@ -25,38 +26,40 @@ export class CreateHousingComponent {
                             movingDate: ''}
   }
 
-  registerHousing(fiveYears) {
-    this.housingService.registerNewHousing(this.selectedHousing).subscribe(
-      response => {
-        if(!fiveYears)
-        {
-          alert('Your housing ' + this.selectedHousing.postcode + ' has been created !')
-          this.selectedHousing = {id: -1, 
-            postcode:'', 
-            addressLine1:'', 
-            addressLine2:'', 
-            city:'',
-            county:'', 
-            country:'', 
-            movingDate: ''}
-          this.router.navigate(['/add']);
-        }
-        if(fiveYears)
-        {
-          alert('Your last housing ' + this.selectedHousing.postcode + ' has been created !')
-          this.selectedHousing = {id: -1, 
-            postcode:'', 
-            addressLine1:'', 
-            addressLine2:'', 
-            city:'',
-            county:'', 
-            country:'', 
-            movingDate: ''}
-          this.router.navigate(['/list']);
-        }
-        
-      },
-      error => console.log('error', error)
-    );
+  registerHousing() {
+    this.fiveYearsCheck = this.housingService.compareDate(this.selectedHousing.movingDate);
+    this.selectedHousing.movingDate += 'T00:00';
+    if(postcodeValidator(this.selectedHousing.postcode, 'UK'))
+    {
+      if(this.fiveYearsCheck)
+      {
+        this.housingService.registerNewHousing(this.selectedHousing).subscribe(
+          response => {
+              alert('Your housing ' + this.selectedHousing.postcode + ' has been created !')
+              this.selectedHousing = {id: -1, 
+                postcode:'', 
+                addressLine1:'', 
+                addressLine2:'', 
+                city:'',
+                county:'', 
+                country:'', 
+                movingDate: ''}
+              this.router.navigate(['/add']);
+            
+          },
+          error => console.log('error', error)
+        );
+      }
+      else
+      {
+        alert("We don't need this housing because it was more than 5 five years ago")
+        this.router.navigate(['/list']);
+      }
+    }
+    else
+    {
+      alert( this.selectedHousing.postcode + " is not a postcode")
+    }
   }
+  
 }

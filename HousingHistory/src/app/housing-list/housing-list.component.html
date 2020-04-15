@@ -10,7 +10,7 @@
                          [city]="housing.city"
                          [county]="housing.county"
                          [country]="housing.country"
-                         [movingDate]="housing.movingDate"></app-housing-details>
+                         [movingDate]="housing.movingDate.replace('T00:00:00Z','')" ></app-housing-details>
         </ul>
       </div>
     </div>

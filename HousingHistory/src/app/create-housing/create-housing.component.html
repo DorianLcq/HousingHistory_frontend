@@ -1,55 +1,53 @@
 <h2 class="text-center">Inform your homes for 5 years</h2>
 <h3 class="text-center">All fields are required</h3>
-<div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-        <div class="form-group">
-          <label for="postcode">
-            Postcode
-          </label>
-          <input class="form-control" [(ngModel)] = "selectedHousing.postcode" >
+
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="form-group">
+              <label for="postcode">
+                Postcode
+              </label>
+              <input class="form-control" [(ngModel)] = "selectedHousing.postcode" >
+            </div>
+            <div class="form-group">
+                <label for="adressLine1">
+                  Address (line1)
+                </label>
+                <input class="form-control" [(ngModel)] = "selectedHousing.addressLine1" >
+            </div>
+            <div class="form-group">
+                <label for="adressLine2">
+                  Address (line2)
+                </label>
+                <input class="form-control" [(ngModel)] = "selectedHousing.addressLine2">
+                <small class="form-text text-muted">Fill in "/" if you don't need this line</small>
+            </div>
+            <div class="form-group">
+                <label for="city">
+                  City
+                </label>
+                <input class="form-control" [(ngModel)] = "selectedHousing.city" >
+            </div>
+            <div class="form-group">
+                <label for="county">
+                    County
+                </label>
+                <input class="form-control" [(ngModel)] = "selectedHousing.county">
+            </div>
+            <div class="form-group">
+                <label for="country">
+                  Country
+                </label>
+                <input class="form-control" [(ngModel)] = "selectedHousing.country" >
+            </div>
+            <div class="form-group">
+                <label for="movingDate">
+                  Moving date
+                </label>
+                <input class="form-control" type="date"  [(ngModel)] = "selectedHousing.movingDate" placeholder="YYYY-MM-DDThh:mm" >
+            </div>
+            <button type="button" class="btn btn-primary" (click)="registerHousing()" > 
+              Next housing
+            </button>
         </div>
-        <div class="form-group">
-            <label for="adressLine1">
-              Address (line1)
-            </label>
-            <input class="form-control" [(ngModel)] = "selectedHousing.addressLine1" >
-        </div>
-        <div class="form-group">
-            <label for="adressLine2">
-              Address (line2)
-            </label>
-            <input class="form-control" [(ngModel)] = "selectedHousing.addressLine2">
-            <small class="form-text text-muted">Fill in "/" if you don't need this line</small>
-        </div>
-        <div class="form-group">
-            <label for="city">
-              City
-            </label>
-            <input class="form-control" [(ngModel)] = "selectedHousing.city" >
-        </div>
-        <div class="form-group">
-            <label for="county">
-                County
-            </label>
-            <input class="form-control" [(ngModel)] = "selectedHousing.county">
-        </div>
-        <div class="form-group">
-            <label for="country">
-              Country
-            </label>
-            <input class="form-control" [(ngModel)] = "selectedHousing.country" >
-        </div>
-        <div class="form-group">
-            <label for="movingDate">
-              Moving date
-            </label>
-            <input class="form-control" type="datetime"  [(ngModel)] = "selectedHousing.movingDate" placeholder="YYYY-MM-DDThh:mm" >
-        </div>
-        <button type="button" class="btn btn-primary" (click)="registerHousing(false)" > 
-          Next housing
-        </button>
-        <button type="button" class="btn btn-primary" (click)="registerHousing(true)" > 
-          Last housing
-        </button>
     </div>
-  </div>

@@ -10,6 +10,8 @@ export class HousingService {
 
   baseUrl = "http://127.0.0.1:8000";
   httpHeaders = new HttpHeaders({'Content-type': 'application/json'});
+  today = new Date();
+  fiveYears = this.today.getFullYear() - 5 + '-'+(this.today.getMonth()+1)+'-'+this.today.getDate();
 
   constructor(private http: HttpClient) { }
 
@@ -28,4 +30,17 @@ export class HousingService {
                  movingDate: housing.movingDate};
     return this.http.post(this.baseUrl + '/housinghistory/' , body, {headers : this.httpHeaders} );
   }
+
+  compareDate(movingDate) {
+    if(movingDate < this.fiveYears)
+    {
+      return false;
+    }
+    else
+    {
+      return true;
+    }
+  }
+
+  
 }
