@@ -1,53 +1,60 @@
 <h2 class="text-center">Inform your homes for 5 years</h2>
 <h3 class="text-center">All fields are required</h3>
-
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let selected of selectedHousing; index as i">
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
             <div class="form-group">
               <label for="postcode">
                 Postcode
               </label>
-              <input class="form-control" [(ngModel)] = "selectedHousing.postcode" >
+              <input class="form-control" [(ngModel)] = "selected.postcode" >
             </div>
             <div class="form-group">
                 <label for="adressLine1">
                   Address (line1)
                 </label>
-                <input class="form-control" [(ngModel)] = "selectedHousing.addressLine1" >
+                <input class="form-control" [(ngModel)] = "selected.addressLine1" >
             </div>
             <div class="form-group">
                 <label for="adressLine2">
                   Address (line2)
                 </label>
-                <input class="form-control" [(ngModel)] = "selectedHousing.addressLine2">
+                <input class="form-control" [(ngModel)] = "selected.addressLine2">
                 <small class="form-text text-muted">Fill in "/" if you don't need this line</small>
             </div>
             <div class="form-group">
                 <label for="city">
                   City
                 </label>
-                <input class="form-control" [(ngModel)] = "selectedHousing.city" >
+                <input class="form-control" [(ngModel)] = "selected.city" >
             </div>
             <div class="form-group">
                 <label for="county">
                     County
                 </label>
-                <input class="form-control" [(ngModel)] = "selectedHousing.county">
+                <input class="form-control" [(ngModel)] = "selected.county">
             </div>
             <div class="form-group">
                 <label for="country">
                   Country
                 </label>
-                <input class="form-control" [(ngModel)] = "selectedHousing.country" >
+                <input class="form-control" [(ngModel)] = "selected.country" >
             </div>
             <div class="form-group">
                 <label for="movingDate">
                   Moving date
                 </label>
-                <input class="form-control" type="date"  [(ngModel)] = "selectedHousing.movingDate" placeholder="YYYY-MM-DDThh:mm" >
+                <input class="form-control" type="date" id="myDate" [(ngModel)] = "selected.movingDate">
             </div>
-            <button type="button" class="btn btn-primary" (click)="registerHousing()" > 
-              Next housing
-            </button>
+            <div id="hideButton">
+              <button type="button" class="btn btn-primary" (click)="registerHousing(i)" > 
+                Next housing
+              </button>
+            </div>
+          <br>
+          <br>
         </div>
     </div>
+  </li>
+</ul>

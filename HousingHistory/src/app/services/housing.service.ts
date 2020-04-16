@@ -42,5 +42,8 @@ export class HousingService {
     }
   }
 
+  inputDate(date) {
+    //(<HTMLInputElement>document.getElementById("myDate")).value = date;
+  }
   
 }
