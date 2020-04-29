@@ -10,10 +10,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HousingService } from './services/housing.service';
 import {HttpClientModule } from '@angular/common/http';
+import { LoginUserComponent } from './login-user/login-user.component';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 const appRoutes: Routes = [
-  { path: 'add', component: CreateHousingComponent },
-  { path: 'list', component: HousingListComponent }
+  { path: 'create-housing/:username', component: CreateHousingComponent },
+  { path: 'list-housing/:token', component: HousingListComponent },
+  { path: 'create-user', component: CreateUserComponent },
+  { path: 'login-user', component: LoginUserComponent }
 ];
 
 @NgModule({
@@ -21,7 +25,9 @@ const appRoutes: Routes = [
     AppComponent,
     CreateHousingComponent,
     HousingDetailsComponent,
-    HousingListComponent
+    HousingListComponent,
+    LoginUserComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,

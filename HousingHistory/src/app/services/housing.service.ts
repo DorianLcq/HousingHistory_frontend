@@ -27,7 +27,8 @@ export class HousingService {
                  city: housing.city, 
                  county: housing.county, 
                  country: housing.country, 
-                 movingDate: housing.movingDate};
+                 movingDate: housing.movingDate,
+                 "user" : housing.userId};
     return this.http.post(this.baseUrl + '/housinghistory/' , body, {headers : this.httpHeaders} );
   }
 
@@ -42,8 +43,7 @@ export class HousingService {
     }
   }
 
-  inputDate(date) {
-    //(<HTMLInputElement>document.getElementById("myDate")).value = date;
-  }
+
+  
   
 }

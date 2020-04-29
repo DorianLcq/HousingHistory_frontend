@@ -4,13 +4,15 @@
         <h2>Housing history</h2>
         <ul class="list-group">
           <app-housing-details  *ngFor="let housing of housinghistory"
+                         [id]="housing.id"
                          [postcode]="housing.postcode"
                          [addressLine1]="housing.addressLine1"
                          [addressLine2]="housing.addressLine2"
                          [city]="housing.city"
                          [county]="housing.county"
                          [country]="housing.country"
-                         [movingDate]="housing.movingDate.replace('T00:00:00Z','')" ></app-housing-details>
+                         [movingDate]="housing.movingDate.replace('T00:00:00Z','')"
+                         [user]="housing.user" ></app-housing-details>
         </ul>
       </div>
     </div>

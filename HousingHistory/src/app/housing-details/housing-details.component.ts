@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HousingDetailsComponent  {
   
+  @Input() id;
   @Input() postcode;
   @Input() addressLine1;
   @Input() addressLine2;
@@ -14,6 +15,7 @@ export class HousingDetailsComponent  {
   @Input() county;
   @Input() country;
   @Input() movingDate;
+  @Input() user;
   
 
   constructor() { }
